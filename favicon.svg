@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect width="300" height="300" fill="#0d1b2e" rx="20"/>
+
+  <!-- Sun rays -->
+  <g transform="translate(150, 110)">
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(30)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(60)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(90)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(120)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(150)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(180)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(210)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(240)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(270)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(300)"/>
+    <line x1="0" y1="-48" x2="0" y2="-80" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" transform="rotate(330)"/>
+    <!-- Sun circle -->
+    <circle cx="0" cy="0" r="46" fill="#0d1b2e"/>
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#c9a84c" stroke-width="4"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.4"/>
+    <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.12"/>
+  </g>
+
+  <!-- Man figure -->
+  <line x1="135" y1="262" x2="165" y2="262" stroke="#c9a84c" stroke-width="2" opacity="0.3"/>
+  <line x1="143" y1="262" x2="146" y2="232" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <line x1="157" y1="262" x2="154" y2="232" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <line x1="146" y1="232" x2="150" y2="192" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="154" y1="232" x2="150" y2="192" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M141 236 Q150 230 159 236" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M128 200 Q150 190 172 200" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M130 202 Q112 184 105 164" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M170 202 Q188 184 195 164" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M148 194 Q149 183 150 178" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <path d="M152 194 Q151 183 150 178" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="150" cy="170" rx="12" ry="14" fill="none" stroke="#c9a84c" stroke-width="3" transform="rotate(-15, 150, 170)"/>
+
+  <!-- Light beam -->
+  <line x1="150" y1="155" x2="150" y2="165" stroke="#e8c97a" stroke-width="2" opacity="0.3" stroke-dasharray="3,3"/>
+</svg>

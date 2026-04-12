@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Richard's Rants — The Age of Reason</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2e; --navy-mid: #152540; --navy-light: #1e3357; --gold: #c9a84c; --gold-light: #e8c97a; --white: #f9f4ec; --text: #d6c9a8; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--navy); color: var(--text); font-family: 'Crimson Text', Georgia, serif; font-size: 18px; line-height: 1.8; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(13,27,46,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--text); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .page-hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a1525 0%, var(--navy) 100%); position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: var(--white); position: relative; }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p { max-width: 700px; margin-top: 1.5rem; font-size: 1.15rem; position: relative; opacity: 0.85; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); font-weight: 600; margin-bottom: 2rem; line-height: 1.25; }
+    h2 span { color: var(--gold); }
+    p { margin-bottom: 1.25rem; color: var(--text); }
+    .rants-container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .rant { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.2); border-left: 4px solid var(--gold); padding: 3rem; margin-bottom: 3rem; }
+    .rant-date { font-family: 'Cinzel', serif; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
+    .rant-title { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--white); font-weight: 600; margin-bottom: 2rem; line-height: 1.3; }
+    .rant-title span { color: var(--gold); }
+    .rant p { margin-bottom: 1.25rem; }
+    .rant p:last-child { margin-bottom: 0; }
+    .rant-emphasis { font-size: 1.2rem; font-style: italic; color: var(--gold-light); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; }
+    .rant-quote { border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; font-size: 1.1rem; color: var(--text); opacity: 0.9; }
+    .coming-soon { text-align: center; padding: 2rem; opacity: 0.6; font-style: italic; }
+    footer { background: #070f1c; border-top: 1px solid rgba(201,168,76,0.2); text-align: center; padding: 3rem 2rem; }
+    footer .footer-logo svg { height: 60px; width: auto; margin-bottom: 1rem; }
+    footer p { font-size: 0.85rem; color: rgba(214,201,168,0.5); margin: 0; }
+    footer .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    footer .footer-links a { color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="aor-logo" viewBox="0 0 300 400">
+    <rect width="300" height="400" fill="transparent"/>
+    <g transform="translate(150, 85)">
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(30)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(60)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(90)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(120)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(150)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(180)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(210)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(240)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(270)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(300)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(330)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(15)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(45)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(75)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(105)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(135)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(165)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(195)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(225)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(255)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(285)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(315)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(345)"/>
+      <circle cx="0" cy="0" r="40" fill="#0d1b2e"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.1"/>
+    </g>
+    <line x1="120" y1="310" x2="180" y2="310" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+    <line x1="140" y1="310" x2="145" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="160" y1="310" x2="155" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="145" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="155" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M140 275 Q150 268 160 275" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M125 218 Q150 208 175 218" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M128 220 Q108 200 100 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M172 220 Q192 200 200 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M100 178 Q96 170 98 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M100 178 Q103 169 106 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q196 170 194 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q203 169 204 164" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M146 212 Q148 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M154 212 Q152 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="150" cy="188" rx="13" ry="16" fill="none" stroke="#c9a84c" stroke-width="2" transform="rotate(-15, 150, 188)"/>
+    <path d="M144 183 Q147 180 150 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <path d="M150 183 Q153 180 156 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <line x1="150" y1="125" x2="150" y2="175" stroke="#e8c97a" stroke-width="1" opacity="0.25" stroke-dasharray="4,4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="americans.html">Great Americans</a></li>
+    <li><a href="losttogether.html">Lost Together&trade;</a></li>
+    <li><a href="rants.html">Rants</a></li>
+    <li><a href="index.html#donate">Donate</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <p class="section-label">Richard's Rants</p>
+  <h1>Unfiltered <span>Truth</span></h1>
+  <p>A place for direct observations, moral clarity, and the uncomfortable questions nobody else wants to ask.</p>
+</header>
+
+<div class="rants-container">
+
+  <!-- RANT 1: THOMAS PAINE -->
+  <div class="rant">
+    <div class="rant-date">March 2026</div>
+    <div class="rant-title">They Buried Thomas Paine Because He Was <span>Right</span></div>
+
+    <p>We talk about the founding fathers like they were visionaries united in purpose. We don't talk about how most of them were hedging their bets, still trying to negotiate with the mother country, still calculating what was in their personal interest. They were politicians. Playing both sides.</p>
+
+    <p>Then Thomas Paine showed up.</p>
+
+    <p>He didn't write carefully worded diplomatic language. He wrote <em>Common Sense</em> — a pamphlet so clear, so direct, so morally undeniable that it forced the hand of every politician in the colonies. They didn't want independence. It was too risky. But Paine wrote words so true that the common people — the ones nobody asked — suddenly understood: we don't need a king. We don't need their permission. We can do this ourselves.</p>
+
+    <div class="rant-emphasis">He made independence inevitable. Not because the founders wanted it. Because the people demanded it.</div>
+
+    <p>Then came <em>The Crisis</em>. When Washington's army was starving, freezing, on the verge of collapse, when every rational calculation said the Revolution was lost — Paine wrote: "These are the times that try men's souls." He didn't write to the generals or the politicians. He wrote to the soldiers. To the desperate. To the ones with nothing left but belief. And those words held the Revolution together when everything else was falling apart.</p>
+
+    <p>After that came <em>The Rights of Man</em> — a declaration that ordinary people deserved power. Real power. Not the scraps the elite threw them.</p>
+
+    <p>And then — the thing they couldn't forgive — came <em>The Age of Reason</em>.</p>
+
+    <p>In that book, Paine looked at organized religion and said what everyone else was too afraid to say: it's fabricated. It's a tool of control. The Creator isn't in the pulpit. The Creator is in nature. In reason. In the universe itself. You don't need priests to tell you how to think about God. You have a mind. Use it.</p>
+
+    <div class="rant-emphasis">That was the moment they decided to bury him.</div>
+
+    <p>Because <em>The Age of Reason</em> threatened the thing they held onto above everything else — their claim to moral authority. Their pathway to heaven. Their excuse for obedience.</p>
+
+    <p>But here's the part that infuriates me: Paine wasn't just right about religion. He was right about everything else too.</p>
+
+    <p>While Jefferson and Washington were writing about liberty while enslaving 600 human beings, Paine saw slavery clearly. He didn't own slaves. He didn't profit from human suffering. He saw the contradiction immediately — all men are created equal means all men, period — and he said it was wrong. Not as a future aspiration. As a moral fact.</p>
+
+    <div class="rant-quote">"All men are created equal" — Jefferson wrote those words. Paine lived them.</div>
+
+    <p>Jefferson gets monuments. He gets his face on coins. We soften his legacy with phrases like "man of his time" — as if the moral clarity to see slavery as evil was somehow unavailable to him. It wasn't. Paine had it. He proved it was possible.</p>
+
+    <p>But Paine? Six people attended his funeral. His bones were stolen and lost forever. His legacy was buried so thoroughly that most Americans don't even know his name.</p>
+
+    <p>Why? Because he was right. And they were wrong. And they couldn't forgive him for it.</p>
+
+    <p>He forced their hand on independence when they wanted to negotiate. He held their revolution together when it would have collapsed. He told the truth about power, about equality, about religion, about slavery — while the politicians around him calculated how to profit from the status quo.</p>
+
+    <p>That's why he had to be erased. That's why we've never heard his voice. That's why Jefferson — the slaveholder who wrote beautiful lies — gets remembered as a visionary.</p>
+
+    <p>Because the truth is dangerous. And Paine was a man who told it.</p>
+
+    <div class="rant-emphasis">This is why The Age of Reason exists. To resurrect what they buried. To remind people that the idealist who gets the hard moral questions right is worth more than a thousand politicians who get them wrong.</div>
+
+    <p>Paine doesn't need an asterisk. He doesn't need a footnote explaining his flaws. He was right about everything. And that's exactly why they've tried so hard to make us forget him.</p>
+
+    <p style="text-align:right; font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.1em; color:var(--gold); margin-top:2rem; margin-bottom:0;">Richard C. Mayhue &nbsp;·&nbsp; July 11, 2025</p>
+
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="coming-soon">
+    <p>More rants coming soon...</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="americans.html">Great Americans</a>
+    <a href="losttogether.html">Lost Together&trade;</a>
+    <a href="index.html#membership">Join Us</a>
+    <a href="mailto:Thereasonage@gmail.com">Contact</a>
+  </div>
+  <p>Founded by Richard C. Mayhue &nbsp;·&nbsp; In the tradition of Thomas Paine &nbsp;·&nbsp; Established in the spirit of the Enlightenment</p>
+  <br>
+  <p style="opacity:0.35;font-size:0.75rem">"My own mind is my own church." — T. Paine</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Age of Reason</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1b2e; --navy-mid: #152540; --navy-light: #1e3357;
+      --gold: #c9a84c; --gold-light: #e8c97a; --white: #f9f4ec; --text: #d6c9a8;
+    }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--navy); color: var(--text); font-family: 'Crimson Text', Georgia, serif; font-size: 18px; line-height: 1.8; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(13,27,46,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--text); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 4rem; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a1525 0%, var(--navy) 100%); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+    .hero-logo { position: relative; margin-bottom: 1rem; }
+    .hero-logo svg { height: 180px; width: auto; filter: drop-shadow(0 0 24px rgba(201,168,76,0.25)); }
+    .hero-tagline { font-family: 'Crimson Text', serif; font-style: italic; font-size: clamp(0.9rem, 1.8vw, 1.1rem); color: var(--gold); opacity: 0.8; margin-bottom: 1rem; letter-spacing: 0.05em; position: relative; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 700; color: var(--white); line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 0.5rem; position: relative; }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle { font-family: 'Cinzel', serif; font-size: clamp(0.7rem, 1.5vw, 0.9rem); letter-spacing: 0.3em; color: var(--gold); margin-bottom: 2rem; text-transform: uppercase; position: relative; }
+    .hero-quote { max-width: 680px; font-style: italic; font-size: 1.2rem; color: var(--text); opacity: 0.85; margin-bottom: 3rem; border-left: 2px solid var(--gold); padding-left: 1.5rem; text-align: left; position: relative; }
+    .hero-quote cite { display: block; margin-top: 0.5rem; font-style: normal; font-size: 0.82rem; letter-spacing: 0.1em; color: var(--gold); font-family: 'Cinzel', serif; }
+    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); font-weight: 600; margin-bottom: 2rem; line-height: 1.25; }
+    h2 span { color: var(--gold); }
+    p { margin-bottom: 1.25rem; color: var(--text); }
+    .bathwater-section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+    .bathwater-emphasis { font-size: 1.2rem; font-style: italic; color: var(--gold-light); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; }
+    .anchor-statement { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3); border-left: 4px solid var(--gold); padding: 2rem; margin-top: 3rem; font-size: 1.1rem; font-style: italic; color: #f5e6c0; }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .pillar { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.2); border-top: 3px solid var(--gold); padding: 2rem 1.5rem; }
+    .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .pillar h3 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 0.75rem; }
+    .pillar p { font-size: 0.95rem; margin: 0; }
+    .band { background: var(--navy-mid); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 6rem 2rem; }
+    .band-inner { max-width: 900px; margin: 0 auto; }
+    .founder-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+    .founder-portrait { background: var(--navy-light); border: 1px solid rgba(201,168,76,0.3); padding: 1rem; text-align: center; }
+    .founder-portrait img { width: 100%; max-width: 220px; display: block; margin: 0 auto; filter: sepia(20%) contrast(110%); }
+    .founder-portrait figcaption { font-family: 'Cinzel', serif; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em; margin-top: 0.75rem; }
+    .founder-quote-block { border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; font-size: 1.15rem; }
+    .reversal-box { background: linear-gradient(135deg, var(--navy-light), var(--navy-mid)); border: 1px solid rgba(201,168,76,0.3); padding: 2.5rem; margin-top: 2rem; position: relative; }
+    .reversal-box::before { content: '\201C'; font-family: Georgia, serif; font-size: 8rem; color: var(--gold); opacity: 0.08; position: absolute; top: -1rem; left: 1rem; line-height: 1; }
+    .reversal-box h3 { font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1.1rem; margin-bottom: 1rem; }
+    .pages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .page-card { border: 1px solid rgba(201,168,76,0.25); padding: 2rem; background: rgba(21,37,64,0.5); text-decoration: none; transition: border-color 0.3s, transform 0.3s; display: block; }
+    .page-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .page-card .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .page-card h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.75rem; }
+    .page-card p { font-size: 0.9rem; margin: 0; color: var(--text); }
+    .donate-band { background: linear-gradient(135deg, #0a1a2e, var(--navy-mid)); border-top: 1px solid rgba(201,168,76,0.3); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 6rem 2rem; }
+    .donate-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .donate-inner h2 { margin-bottom: 1rem; }
+    .donate-inner p { margin-bottom: 1.5rem; }
+    .donate-btn { display: inline-block; padding: 1.1rem 3rem; background: transparent; border: 1px solid var(--gold); color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; margin-bottom: 2rem; }
+    .donate-btn:hover { background: var(--gold); color: var(--navy); }
+    .nonprofit-badge { display: inline-block; border: 1px solid rgba(201,168,76,0.3); padding: 1rem 2rem; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); opacity: 0.8; }
+    .nonprofit-badge span { display: block; margin-top: 0.25rem; font-family: 'Crimson Text', serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--text); opacity: 0.7; }
+    .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .membership-card { border: 1px solid rgba(201,168,76,0.25); padding: 1.75rem; text-align: center; background: rgba(21,37,64,0.5); transition: border-color 0.3s, transform 0.3s; }
+    .membership-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .membership-card .num { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); opacity: 0.5; line-height: 1; margin-bottom: 0.5rem; }
+    .membership-card h3 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--white); margin-bottom: 0.75rem; }
+    .membership-card p { font-size: 0.9rem; margin: 0; }
+    .join-cta { text-align: center; margin-top: 3rem; padding: 3rem; border: 1px solid rgba(201,168,76,0.2); background: var(--navy-mid); }
+    .join-cta h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 1rem; }
+    .join-cta p { max-width: 500px; margin: 0 auto 2rem; }
+    .signup-form { max-width: 600px; margin: 2rem auto 0; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+    .form-group label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--navy); border: 1px solid rgba(201,168,76,0.3); color: var(--white); padding: 0.75rem 1rem; font-family: 'Crimson Text', serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--navy); }
+    .form-submit { width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--gold); color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+    .form-submit:hover { background: var(--gold); color: var(--navy); }
+    .form-note { font-size: 0.85rem; color: var(--text); opacity: 0.6; text-align: center; margin-top: 1rem; }
+    .video-placeholder { background: var(--navy-light); border: 1px solid rgba(201,168,76,0.3); padding: 4rem 2rem; margin-top: 2rem; text-align: center; }
+    .video-placeholder p { color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.2em; margin: 0; }
+    .video-play-icon { font-size: 4rem; color: var(--gold); opacity: 0.4; margin-bottom: 1rem; }
+    footer { background: #070f1c; border-top: 1px solid rgba(201,168,76,0.2); text-align: center; padding: 3rem 2rem; }
+    footer .footer-logo svg { height: 60px; width: auto; margin-bottom: 1rem; }
+    footer p { font-size: 0.85rem; color: rgba(214,201,168,0.5); margin: 0; }
+    footer .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    footer .footer-links a { color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; transition: opacity 0.3s; }
+    footer .footer-links a:hover { opacity: 0.7; }
+    @media (max-width: 640px) { .founder-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .hero-logo svg { height: 120px; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="aor-logo" viewBox="0 0 300 400">
+    <rect width="300" height="400" fill="transparent"/>
+    <g transform="translate(150, 85)">
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(30)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(60)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(90)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(120)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(150)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(180)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(210)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(240)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(270)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(300)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(330)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(15)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(45)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(75)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(105)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(135)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(165)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(195)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(225)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(255)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(285)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(315)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(345)"/>
+      <circle cx="0" cy="0" r="40" fill="#0d1b2e"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.1"/>
+    </g>
+    <line x1="120" y1="310" x2="180" y2="310" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+    <line x1="140" y1="310" x2="145" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="160" y1="310" x2="155" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="145" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="155" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M140 275 Q150 268 160 275" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M125 218 Q150 208 175 218" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M128 220 Q108 200 100 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M172 220 Q192 200 200 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M100 178 Q96 170 98 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M100 178 Q103 169 106 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q196 170 194 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q203 169 204 164" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M146 212 Q148 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M154 212 Q152 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="150" cy="188" rx="13" ry="16" fill="none" stroke="#c9a84c" stroke-width="2" transform="rotate(-15, 150, 188)"/>
+    <path d="M144 183 Q147 180 150 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <path d="M150 183 Q153 180 156 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <line x1="150" y1="125" x2="150" y2="175" stroke="#e8c97a" stroke-width="1" opacity="0.25" stroke-dasharray="4,4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why">Why We're Here</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#paine">Thomas Paine</a></li>
+    <li><a href="#reversal">Richard's Reversal&trade;</a></li>
+    <li><a href="americans.html">Great Americans</a></li>
+    <li><a href="losttogether.html">Lost Together&trade;</a></li>
+    <li><a href="rants.html">Richard's Rants</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#membership">Join Us</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </div>
+  <p class="hero-tagline">The church for people who don't go to church.</p>
+  <p class="hero-subtitle">Established in the Tradition of the Enlightenment</p>
+  <h1>The <span>Age of Reason</span></h1>
+  <div style="height:1.5rem"></div>
+  <blockquote class="hero-quote">
+    "The world is my country, all mankind are my brethren, and to do good is my religion."
+    <cite>— Thomas Paine</cite>
+  </blockquote>
+</header>
+
+<!-- WHY WE'RE HERE -->
+<section id="why" class="bathwater-section">
+  <p class="section-label">Why We're Here</p>
+  <h2>We're Keeping the <span>Bathwater</span></h2>
+
+  <p>You've probably heard the phrase: "Don't throw the baby out with the bathwater." It's a warning against losing something precious while trying to discard something unwanted.</p>
+  <p>The Age of Reason does something different. <strong style="color:var(--gold-light)">We're throwing out the baby — but we're keeping the bathwater.</strong></p>
+  <p>Let us explain.</p>
+
+  <div class="bathwater-emphasis">The baby — in every sense of the word — is the mythology. The virgin birth. The miracles. The certainties that demand obedience rather than inquiry.</div>
+
+  <p>For centuries, religious institutions wrapped genuine human goods — community, fellowship, healing, moral purpose — in a package of supernatural claims. The virgin birth. The miracles. The certainties that demand obedience rather than inquiry. The God who punishes doubt and rewards blind faith. That's the baby we're discarding. Not out of anger, but out of honesty.</p>
+  <p>We have no problem with Jesus the man — a teacher, a moral voice, a figure of genuine historical importance. We reject the mythology built around him. We reject the claim that reason must be surrendered to preserve faith. We reject the idea that community requires us to stop thinking.</p>
+  <p>The bathwater — that's everything else. The gathering of people. The shared meal. The sanctuary of a place where you belong. The ritual that marks life's passages. The accountability to something larger than yourself. The healing that comes from being known and accepted without condition. The courage to ask hard questions alongside others who are asking them too.</p>
+
+  <div class="bathwater-emphasis">This is what we're keeping.</div>
+
+  <p>Most people who leave religion end up alone — isolated, cynical, spiritually homeless. They threw out both the baby and the bathwater. We refused to do that. We recognized that the community, the fellowship, the structure of gathering together — those are real goods. They're worth preserving.</p>
+  <p>So we built a church for people who don't go to church. A place for those of us who love the bathwater but can't keep pretending the baby is real. A sanctuary for the honest, the doubting, the questioning — and the people brave enough to say: <em>I want community and fellowship and meaning, but I won't lie to myself to get it.</em></p>
+  <p>Thomas Paine understood this. So did Jefferson, Franklin, Lincoln. They held onto reason while refusing to abandon the human need for connection and shared purpose. That's the tradition we're continuing.</p>
+  <p>You don't have to choose between your mind and your community. You don't have to surrender one to keep the other.</p>
+
+  <div class="bathwater-emphasis">That's what The Age of Reason is about.</div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <p class="section-label">Who We Are</p>
+  <h2>Awakening the <span>Universal Spirit</span></h2>
+  <p>For over 250 years, the great ideas of the Enlightenment have been frozen in place by institutions too threatened to let them thaw. Thomas Paine was their loudest and most fearless voice. The Age of Reason exists to finish what he started. The thaw is long overdue.</p>
+  <div class="anchor-statement">
+    "We are a community devoted to fostering individual understanding and reflection on the nature of the Creator, grounded not in scripture or doctrine, but in reason, nature, and truth as discerned through honest inquiry and intellectual integrity."
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🔦</div>
+      <h3>Awaken the Spirit</h3>
+      <p>Invigorate the universal human spirit buried beneath centuries of superstition and dogma.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🌿</div>
+      <h3>Connect to Nature</h3>
+      <p>Use the knowledge gained from humanity's discoveries to establish an authentic connection to the laws of nature and the universe.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🕊️</div>
+      <h3>Heal & Restore</h3>
+      <p>Offer victims of church abuse and indoctrination a safe, honest place to regain their spiritual footing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE -->
+<div class="band">
+  <div class="band-inner">
+    <p class="section-label">Explore</p>
+    <h2>Go <span>Deeper</span></h2>
+    <div class="pages-grid">
+      <a href="americans.html" class="page-card">
+        <div class="card-icon">🇺🇸</div>
+        <h3>Great Americans</h3>
+        <p>The freethinkers, deists, and skeptics who built this nation and carried the torch of reason through history.</p>
+      </a>
+      <a href="losttogether.html" class="page-card">
+        <div class="card-icon">✨</div>
+        <h3>Lost Together&trade;</h3>
+        <p>We make no claim to ultimate answers. But being lost together — with courage and wonder — is its own kind of light.</p>
+      </a>
+      <a href="rants.html" class="page-card">
+        <div class="card-icon">🔥</div>
+        <h3>Richard's Rants</h3>
+        <p>From the founder himself.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- THOMAS PAINE -->
+<div class="band" id="paine">
+  <div class="band-inner">
+    <p class="section-label">Our Founding Influence</p>
+    <h2>Thomas <span>Paine</span></h2>
+    <div class="founder-grid">
+      <figure class="founder-portrait">
+        <img src="paine.jpg" alt="Portrait of Thomas Paine"/>
+        <figcaption>THOMAS PAINE · 1737–1809</figcaption>
+      </figure>
+      <div>
+        <p>Thomas Paine was a political philosopher, revolutionary, and freethinker whose 1794 work <em>The Age of Reason</em> challenged organized religion and championed the deist belief that God is best understood through reason and the natural world — not through scripture or clergy.</p>
+        <blockquote class="founder-quote-block">"My own mind is my own church."</blockquote>
+        <p>Paine argued that religion, as constructed by human institutions, was designed to enslave the mind rather than liberate it. He valued free thought, the separation of church and state, and the sovereignty of the individual conscience. Unlike his contemporaries, Paine also stood firmly against slavery from the very beginning — because when he said all men are created equal, he actually meant it.</p>
+        <blockquote class="founder-quote-block">"It is error only, and not truth, that shrinks from inquiry."</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RICHARD'S REVERSAL -->
+<section id="reversal">
+  <p class="section-label">Our Philosophy</p>
+  <h2>Richard's Reversal<sup style="font-size:0.55em;vertical-align:super;">™</sup></h2>
+  <p>Pascal's Wager argues that one should believe in God out of self-interest — because the potential reward of heaven outweighs the cost. <strong style="color:var(--gold-light)">Richard's Reversal&trade;</strong> turns this argument on its head.</p>
+  <div class="reversal-box">
+    <h3>The Principle</h3>
+    <p>At The Age of Reason, we hold that belief in the divine should stem from <em>authentic conviction</em>, not from fear of punishment or hope for reward. A faith adopted for strategic, self-interested reasons is not genuine faith — it is spiritual theater.</p>
+    <p>Richard's Reversal&trade; challenges us to embrace doubt as a virtue, and to seek truth through reason. Genuine connection to the divine must be free from ulterior motives. The moment belief is calculated, it ceases to be belief at all.</p>
+    <p>We encourage all members to explore their convictions with courage and honesty, fostering a community where reason leads to enlightenment — not where fear leads to conformity.</p>
+  </div>
+</section>
+
+<!-- PANPSYCHISM -->
+<section id="panpsychism">
+  <p class="section-label">Our View of Consciousness</p>
+  <h2>The <span>Mind</span> Within All Things</h2>
+  <p>Among the most profound ideas emerging from modern philosophy and science is one that Thomas Paine himself might have embraced: <em>panpsychism</em> — the view that consciousness, or something like it, is not a product of biology alone, but a fundamental and irreducible feature of the universe itself.</p>
+  <div class="bathwater-emphasis">If the Creator is in nature — as deism holds — then perhaps the Creator is not separate from consciousness. Perhaps consciousness is how the universe experiences itself.</div>
+  <p>Panpsychism requires no miracles, no revelation, no scripture. It follows from a simple and ancient observation: the universe is not dead matter randomly organized. It is ordered, intricate, and — at least in beings like us — aware of itself. The question is not whether consciousness exists, but where it begins.</p>
+  <p>Orthodox science tells us consciousness <em>emerges</em> from complex arrangements of matter — yet it has never explained how. This is what philosophers call the "hard problem of consciousness," and it remains unsolved. Panpsychism offers an alternative: consciousness was never absent from matter. It was always there, in simpler forms, building toward the self-awareness we experience as human minds.</p>
+  <div class="anchor-statement">At The Age of Reason, we hold that exploring this possibility — that awareness is woven into the fabric of existence — is not mysticism. It is the natural extension of honest inquiry into what the universe actually is.</div>
+  <p>This is not a doctrine we require you to accept. It is a question we invite you to sit with. What if the light of consciousness you experience right now is the same light that animates all of nature? What if reason — the very faculty by which you are reading these words — is the universe coming to know itself?</p>
+  <p>Paine saw the Creator in the majesty of the natural world. We believe he was looking in exactly the right direction.</p>
+</section>
+
+<!-- VIDEO -->
+<div class="band" id="video">
+  <div class="band-inner">
+    <p class="section-label">From Our Founder</p>
+    <h2>A Message from <span>Richard</span></h2>
+    <p>Hear directly from Richard C. Mayhue — founder of The Age of Reason — on what inspired this community and why its message matters now more than ever.</p>
+    <div class="video-placeholder">
+      <div class="video-play-icon">▶</div>
+      <p>VIDEO COMING SOON</p>
+    </div>
+  </div>
+</div>
+
+<!-- DONATE -->
+<div class="donate-band" id="donate">
+  <div class="donate-inner">
+    <p class="section-label">Support the Mission</p>
+    <h2>Help Us <span>Keep the Torch Lit</span></h2>
+    <p>The Age of Reason exists to finish what Thomas Paine started — to build a community grounded in reason, fellowship, and honest inquiry. Your contribution directly supports our gatherings, educational programs, outreach, and the ongoing work of making this community real.</p>
+    <p>Every dollar goes toward building something Paine would have recognized: a place where people can think freely, heal honestly, and belong without pretending.</p>
+    <a href="https://www.paypal.com/donate/?business=Thereasonage@gmail.com&currency_code=USD" target="_blank" class="donate-btn">Support The Age of Reason</a>
+    <br/>
+    <div class="nonprofit-badge">
+      THE AGE OF REASON · REGISTERED 501(c)(3) NONPROFIT
+      <span>EIN 33-1577252 · All donations are tax deductible</span>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBERSHIP -->
+<div class="band" id="membership">
+  <div class="band-inner">
+    <p class="section-label">Join Us</p>
+    <h2>Become a <span>Member</span></h2>
+    <p>Membership is open to all individuals who embrace the principles of deism, humanism, rational inquiry, and ethical conduct. We welcome questioners, doubters, seekers, and anyone who has felt their spiritual journey deserved better than what they were handed.</p>
+    <div class="membership-grid">
+      <div class="membership-card">
+        <div class="num">I</div>
+        <h3>Community</h3>
+        <p>Monthly meetings open to all members — study, dialogue, and genuine human connection grounded in reason.</p>
+      </div>
+      <div class="membership-card">
+        <div class="num">II</div>
+        <h3>Healing</h3>
+        <p>A safe and honest space for those recovering from church abuse, trauma, or religious indoctrination.</p>
+      </div>
+      <div class="membership-card">
+        <div class="num">III</div>
+        <h3>Inquiry</h3>
+        <p>Educational programs, philosophical discussion, and the freedom to ask questions you were told not to ask.</p>
+      </div>
+      <div class="membership-card">
+        <div class="num">IV</div>
+        <h3>Governance</h3>
+        <p>A member-informed Board of Directors ensures the church remains transparent, ethical, and mission-driven.</p>
+      </div>
+    </div>
+    <div class="join-cta">
+      <h3>Ready to Begin Your Inquiry?</h3>
+      <p>We don't ask you to believe anything. We only ask that you think — honestly, courageously, and freely.</p>
+      <form class="signup-form" action="https://formsubmit.co/Thereasonage@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Age of Reason Member Application"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_next" value="https://theageofreason.org"/>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Thomas" required/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Paine" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>City & State</label>
+          <input type="text" name="location" placeholder="Philadelphia, PA"/>
+        </div>
+        <div class="form-group">
+          <label>How did you find us?</label>
+          <select name="referral">
+            <option value="">Select one...</option>
+            <option value="search">Internet Search</option>
+            <option value="friend">Friend or Family</option>
+            <option value="social">Social Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us a little about yourself (optional)</label>
+          <textarea name="message" placeholder="What brings you to The Age of Reason?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit My Interest</button>
+        <p class="form-note">Your information will never be shared. We'll be in touch shortly.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </div>
+  <div class="footer-links">
+    <a href="americans.html">Great Americans</a>
+    <a href="losttogether.html">Lost Together&trade;</a>
+    <a href="rants.html">Richard's Rants</a>
+    <a href="#donate">Donate</a>
+    <a href="#membership">Join Us</a>
+    <a href="mailto:Thereasonage@gmail.com">Contact</a>
+  </div>
+  <p>Founded by Richard C. Mayhue &nbsp;·&nbsp; In the tradition of Thomas Paine &nbsp;·&nbsp; Established in the spirit of the Enlightenment</p>
+  <br>
+  <p style="opacity:0.5;font-size:0.8rem">The Age of Reason is a registered 501(c)(3) nonprofit organization &nbsp;·&nbsp; EIN 33-1577252 &nbsp;·&nbsp; All donations are tax deductible</p>
+  <br>
+  <p style="opacity:0.35;font-size:0.75rem">"My own mind is my own church." — T. Paine</p>
+</footer>
+
+</body>
+</html>
