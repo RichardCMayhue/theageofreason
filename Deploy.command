@@ -4,8 +4,8 @@
 
 cd ~/Desktop/TAoR
 
-# Check if there are any changes to deploy
-if git diff --quiet && git diff --cached --quiet; then
+# Check if there are any changes to deploy (tracked changes or new untracked files)
+if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
   echo "✅ No changes to deploy — your site is already up to date."
   echo ""
   read -p "Press Enter to close..."
