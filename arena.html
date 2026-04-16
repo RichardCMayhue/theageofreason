@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Real Man in the Arena — The Age of Reason</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d1b2e; --navy-mid: #152540; --navy-light: #1e3357; --gold: #c9a84c; --gold-light: #e8c97a; --white: #f9f4ec; --text: #d6c9a8; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--navy); color: var(--text); font-family: 'Crimson Text', Georgia, serif; font-size: 18px; line-height: 1.8; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(13,27,46,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--text); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .page-hero { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a1525 0%, var(--navy) 100%); position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-hero .section-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; position: relative; }
+    .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; color: var(--white); position: relative; line-height: 1.2; }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p { max-width: 700px; margin-top: 1.5rem; font-size: 1.15rem; position: relative; opacity: 0.85; font-style: italic; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); font-weight: 600; margin-bottom: 2rem; line-height: 1.25; }
+    h2 span { color: var(--gold); }
+    p { margin-bottom: 1.25rem; color: var(--text); }
+    .band { background: var(--navy-mid); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 6rem 2rem; }
+    .band-inner { max-width: 900px; margin: 0 auto; }
+    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+    .quote-block { border-left: 3px solid var(--gold); padding: 2rem 2rem 2rem 2.5rem; margin: 2.5rem 0; background: var(--navy-mid); font-style: italic; font-size: 1.15rem; color: #f5e6c0; }
+    .quote-block cite { display: block; margin-top: 1rem; font-style: normal; font-size: 0.8rem; font-family: 'Cinzel', serif; letter-spacing: 0.15em; color: var(--gold); opacity: 0.8; }
+    .dismissal-box { background: rgba(180,60,60,0.06); border: 1px solid rgba(180,60,60,0.25); border-left: 4px solid #c0392b; padding: 2rem 2.5rem; margin: 2.5rem 0; }
+    .dismissal-box .label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; color: #e88080; text-transform: uppercase; margin-bottom: 1rem; }
+    .dismissal-box p { font-style: italic; font-size: 1.1rem; color: #f0c0c0; margin: 0; }
+    .dismissal-box cite { display: block; margin-top: 0.75rem; font-style: normal; font-size: 0.8rem; font-family: 'Cinzel', serif; letter-spacing: 0.15em; color: #e88080; opacity: 0.8; }
+    .arena-checklist { margin: 3rem 0; }
+    .arena-item { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .arena-item:last-child { border-bottom: none; }
+    .arena-num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold); opacity: 0.4; line-height: 1; padding-top: 0.2rem; }
+    .arena-item h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .arena-item p { margin: 0; font-size: 1rem; }
+    .verdict-box { background: linear-gradient(135deg, var(--navy-light), var(--navy-mid)); border: 1px solid rgba(201,168,76,0.4); padding: 3rem; margin: 3rem 0; text-align: center; }
+    .verdict-box h3 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.4rem; margin-bottom: 1.5rem; }
+    .verdict-box p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 1.25rem; }
+    .emphasis { font-size: 1.2rem; font-style: italic; color: var(--gold-light); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+    .profile-portrait { background: var(--navy-light); border: 1px solid rgba(201,168,76,0.3); padding: 1rem; text-align: center; }
+    .profile-portrait img { width: 100%; max-width: 220px; display: block; margin: 0 auto; filter: sepia(20%) contrast(110%); }
+    .profile-portrait figcaption { font-family: 'Cinzel', serif; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em; margin-top: 0.75rem; }
+    footer { background: #070f1c; border-top: 1px solid rgba(201,168,76,0.2); text-align: center; padding: 3rem 2rem; }
+    footer .footer-logo svg { height: 60px; width: auto; margin-bottom: 1rem; }
+    footer p { font-size: 0.85rem; color: rgba(214,201,168,0.5); margin: 0; }
+    footer .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    footer .footer-links a { color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; }
+    footer .footer-links a:hover { opacity: 0.7; }
+    @media (max-width: 640px) { .profile-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .arena-item { grid-template-columns: 2rem 1fr; } }
+  </style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="aor-logo" viewBox="0 0 300 400">
+    <rect width="300" height="400" fill="transparent"/>
+    <g transform="translate(150, 85)">
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(30)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(60)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(90)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(120)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(150)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(180)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(210)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(240)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(270)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(300)"/>
+      <line x1="0" y1="-42" x2="0" y2="-80" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" transform="rotate(330)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(15)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(45)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(75)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(105)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(135)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(165)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(195)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(225)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(255)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(285)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(315)"/>
+      <line x1="0" y1="-42" x2="0" y2="-62" stroke="#e8c97a" stroke-width="1" stroke-linecap="round" opacity="0.5" transform="rotate(345)"/>
+      <circle cx="0" cy="0" r="40" fill="#0d1b2e"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.1"/>
+    </g>
+    <line x1="120" y1="310" x2="180" y2="310" stroke="#c9a84c" stroke-width="1.5" opacity="0.3"/>
+    <line x1="140" y1="310" x2="145" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="160" y1="310" x2="155" y2="270" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="145" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="155" y1="270" x2="150" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M140 275 Q150 268 160 275" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M125 218 Q150 208 175 218" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M128 220 Q108 200 100 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M172 220 Q192 200 200 178" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M100 178 Q96 170 98 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M100 178 Q103 169 106 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q196 170 194 165" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M200 178 Q203 169 204 164" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M146 212 Q148 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M154 212 Q152 200 150 196" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="150" cy="188" rx="13" ry="16" fill="none" stroke="#c9a84c" stroke-width="2" transform="rotate(-15, 150, 188)"/>
+    <path d="M144 183 Q147 180 150 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <path d="M150 183 Q153 180 156 183" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" transform="rotate(-15, 150, 188)"/>
+    <line x1="150" y1="125" x2="150" y2="175" stroke="#e8c97a" stroke-width="1" opacity="0.25" stroke-dasharray="4,4"/>
+  </symbol>
+</svg>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="americans.html">Great Americans</a></li>
+    <li><a href="rants.html">Richard's Rants</a></li>
+    <li><a href="losttogether.html">Lost Together&trade;</a></li>
+    <li><a href="index.html#membership">Join Us</a></li>
+    <li><a href="index.html#donate" style="color:var(--gold-light);font-weight:600;">Donate</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <p class="section-label">The Age of Reason</p>
+  <h1>The <span>Real</span> Man in the Arena</h1>
+  <p>Teddy Roosevelt called him a dirty little atheist. He was describing the man who made Teddy Roosevelt possible.</p>
+</header>
+
+<!-- THE QUOTE -->
+<div class="band">
+  <div class="band-inner">
+    <p class="section-label">The Famous Speech</p>
+    <h2>The Man in the <span>Arena</span></h2>
+    <p>In 1910, Theodore Roosevelt delivered one of the most quoted speeches in American history. You have probably seen it on motivational posters, in locker rooms, on LinkedIn. It goes like this:</p>
+
+    <div class="quote-block">
+      "It is not the critic who counts: not the man who points out how the strong man stumbles or where the doer of deeds could have done them better. The credit belongs to the man who is actually in the arena, whose face is marred by dust and sweat and blood, who strives valiantly, who errs and comes up short again and again, because there is no effort without error or shortcoming, but who knows the great enthusiasms, the great devotions, who spends himself in a worthy cause, who at the best knows in the end the triumph of high achievement, and who at the worst, if he fails, at least he fails while daring greatly, so that his place shall never be with those cold and timid souls who neither know victory nor defeat."
+      <cite>— Theodore Roosevelt, "Citizenship in a Republic," Sorbonne, Paris, 1910</cite>
+    </div>
+
+    <p>A great speech. Genuinely. Roosevelt deserves credit for it. He was a man of action and he meant every word.</p>
+    <p>But here's the problem. About fifteen years before he gave that speech, Roosevelt had this to say about the man who best embodied every single word of it:</p>
+
+    <div class="dismissal-box">
+      <div class="label">Theodore Roosevelt on Thomas Paine</div>
+      <p>"a filthy little atheist"</p>
+      <cite>— Theodore Roosevelt, 1888</cite>
+    </div>
+
+    <p>Three words. Filthy. Little. Atheist.</p>
+    <p>That's what Teddy Roosevelt thought of Thomas Paine. The man who wrote Common Sense. The man who saved the Revolution. The man who was, by every measure Teddy Roosevelt himself would later define, the most genuine man in the arena in the history of this country.</p>
+    <p>The irony is almost too much to take.</p>
+  </div>
+</div>
+
+<!-- PAINE IN THE ARENA -->
+<section>
+  <p class="section-label">The Real Record</p>
+  <h2>Thomas Paine: <span>Actually in the Arena</span></h2>
+
+  <p>Let's go through Roosevelt's own criteria. One by one. And ask who actually fits.</p>
+
+  <div class="arena-checklist">
+
+    <div class="arena-item">
+      <div class="arena-num">I</div>
+      <div>
+        <h3>"Whose face is marred by dust and sweat and blood"</h3>
+        <p>Paine didn't just write about the Revolution. He enlisted in Washington's army as a volunteer aide-de-camp. He marched with the troops. He was there at the lowest moment, when everything was falling apart and Washington's men were starving and ready to quit. He didn't watch from a distance. He was in it.</p>
+      </div>
+    </div>
+
+    <div class="arena-item">
+      <div class="arena-num">II</div>
+      <div>
+        <h3>"Who strives valiantly, who errs and comes up short again and again"</h3>
+        <p>Paine failed constantly by conventional standards. He died broke. He was mocked, exiled, and forgotten by the country he helped create. He was arrested in France and came within hours of execution. He kept going anyway. He never stopped writing, never stopped arguing, never stopped pushing. That is striving valiantly.</p>
+      </div>
+    </div>
+
+    <div class="arena-item">
+      <div class="arena-num">III</div>
+      <div>
+        <h3>"Who spends himself in a worthy cause"</h3>
+        <p>Paine gave away the royalties from Common Sense to fund the Continental Army. He had nothing when he died. No estate, no legacy of wealth, no comfortable retirement. He spent everything, literally, on the cause of human freedom. Jefferson had Monticello. Franklin had his legacy. Paine had a small plot in New Rochelle and a coffin that barely anybody showed up to.</p>
+      </div>
+    </div>
+
+    <div class="arena-item">
+      <div class="arena-num">IV</div>
+      <div>
+        <h3>"Who at the worst, if he fails, at least fails while daring greatly"</h3>
+        <p>In France, Paine spoke out against the execution of King Louis XVI. This was not a safe position. He was thrown in prison by Robespierre and spent nearly a year in Luxembourg Prison waiting to find out if he would be guillotined. He was saved by luck and timing, not by influence or friends in high places. He had none. He dared greatly and nearly paid for it with his life.</p>
+      </div>
+    </div>
+
+    <div class="arena-item">
+      <div class="arena-num">V</div>
+      <div>
+        <h3>"Never with those cold and timid souls who neither know victory nor defeat"</h3>
+        <p>While the other founders were calculating their reputations, hedging their positions and building their legacies, Paine was burning his down for the truth. He attacked organized religion when that was genuinely dangerous. He argued against slavery when that was genuinely unpopular. He told people things they didn't want to hear because they needed to hear them. Cold and timid? He was the opposite of cold and timid.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE VERDICT -->
+<div class="band">
+  <div class="band-inner">
+    <p class="section-label">The Verdict</p>
+    <h2>There Could Have Been <span>No Teddy</span> Without Paine</h2>
+
+    <div class="profile-grid">
+      <figure class="profile-portrait">
+        <img src="paine.jpg" alt="Portrait of Thomas Paine"/>
+        <figcaption>THOMAS PAINE · 1737–1809</figcaption>
+      </figure>
+      <div>
+        <p>Think about what Roosevelt was able to do. He became president of a country that existed. He charged up hills in a war that a functioning republic could afford to fight. He spoke from a bully pulpit that someone had built for him. He stood on ground that had been cleared, generation by generation, starting with the men and women who decided to break from Britain in the first place.</p>
+        <p>Who made that decision feel possible? Who wrote the words that turned colonial grievance into revolutionary conviction? Who stood in front of a freezing, starving army at Valley Forge and gave them something to believe in with a pamphlet that started with the words: <em>These are the times that try men's souls?</em></p>
+        <div class="emphasis">Without Thomas Paine, there is no United States of America. Without the United States of America, there is no Theodore Roosevelt. The man Teddy called a filthy little atheist is the reason Teddy Roosevelt got to be Teddy Roosevelt.</div>
+        <p>Roosevelt gave a speech about the man in the arena. He had no idea he was describing the man he had spent his career dismissing.</p>
+      </div>
+    </div>
+
+    <div class="verdict-box">
+      <h3>The Real Man in the Arena</h3>
+      <p>He didn't just talk about sacrifice. He sacrificed. He didn't just talk about courage. He was courageous when it cost him everything. He didn't just talk about speaking truth to power. He spoke truth to power in three countries, on two continents, across five decades, and he paid for it every single time.</p>
+      <p>His face was marred by dust and sweat and blood. He spent himself completely in a worthy cause. He failed while daring greatly, over and over again, and he never stopped.</p>
+      <p>His name was Thomas Paine. And he was the real man in the arena.</p>
+    </div>
+
+    <div class="quote-block" style="margin-top:3rem;">
+      "These are the times that try men's souls. The summer soldier and the sunshine patriot will, in this crisis, shrink from the service of their country; but he that stands it now, deserves the love and thanks of man and woman."
+      <cite>— Thomas Paine, The Crisis, December 1776</cite>
+    </div>
+
+    <p style="margin-top:2rem;font-style:italic;opacity:0.7;font-size:1rem;">He wrote those words while marching with Washington's retreating army in the dead of winter. On a drumhead, by firelight. That is what the man in the arena actually looks like.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg><use href="#aor-logo"/></svg>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="americans.html">Great Americans</a>
+    <a href="rants.html">Richard's Rants</a>
+    <a href="losttogether.html">Lost Together&trade;</a>
+    <a href="index.html#donate">Donate</a>
+    <a href="index.html#membership">Join Us</a>
+    <a href="mailto:Thereasonage@gmail.com">Contact</a>
+  </div>
+  <p>Founded by Richard C. Mayhue &nbsp;·&nbsp; In the tradition of Thomas Paine &nbsp;·&nbsp; Established in the spirit of the Enlightenment</p>
+  <br>
+  <p style="opacity:0.5;font-size:0.8rem">The Age of Reason is a registered 501(c)(3) nonprofit organization &nbsp;·&nbsp; EIN 33-1577252 &nbsp;·&nbsp; All donations are tax deductible</p>
+  <br>
+  <p style="opacity:0.35;font-size:0.75rem">"My own mind is my own church." — T. Paine</p>
+</footer>
+
+</body>
+</html>

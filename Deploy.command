@@ -4,6 +4,9 @@
 
 cd ~/Desktop/TAoR
 
+# Clear any stale git lock files
+rm -f .git/HEAD.lock .git/index.lock 2>/dev/null
+
 # Check if there are any changes to deploy (tracked changes or new untracked files)
 if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
   echo "✅ No changes to deploy — your site is already up to date."
