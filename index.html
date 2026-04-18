@@ -164,32 +164,36 @@
   <a href="index.html" class="nav-logo">
     <svg><use href="#aor-logo"/></svg>
   </a>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <ul class="nav-links">
-      <li><a href="#why">Why We're Here</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#paine">Thomas Paine</a></li>
-      <li><a href="#reversal">Richard's Reversal&trade;</a></li>
-      <li><a href="americans.html">Great Americans</a></li>
-      <li><a href="losttogether.html">Lost Together&trade;</a></li>
-      <li><a href="rants.html">Richard's Rants</a></li>
-      <li><a href="arena.html">The Arena</a></li>
-      <li><a href="#membership">Join Us</a></li>
-      <li><a href="#donate" style="color:var(--gold-light);font-weight:600;">Donate</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:0.5rem;border-left:1px solid rgba(201,168,76,0.25);padding-left:1.25rem;">
-      <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.5rem;display:flex;align-items:center;">
-        <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png" alt="PayPal Giving Fund" style="height:16px;width:auto;display:block;"/>
-      </div>
-      <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.5rem;display:flex;align-items:center;">
-        <img src="techsoup-logo.png" alt="TechSoup Verified" style="height:16px;width:auto;display:block;"/>
-      </div>
-      <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.5rem;display:flex;align-items:center;">
-        <img src="goodstack-logo.png" alt="GoodStack Verified" style="height:16px;width:auto;display:block;"/>
-      </div>
+  <ul class="nav-links">
+    <li><a href="#why">Why We're Here</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#paine">Thomas Paine</a></li>
+    <li><a href="#reversal">Richard's Reversal&trade;</a></li>
+    <li><a href="americans.html">Great Americans</a></li>
+    <li><a href="losttogether.html">Lost Together&trade;</a></li>
+    <li><a href="rants.html">Richard's Rants</a></li>
+    <li><a href="arena.html">The Arena</a></li>
+    <li><a href="#membership">Join Us</a></li>
+    <li><a href="#donate" style="color:var(--gold-light);font-weight:600;">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- Trust badge cluster — fixed top-right, below nav -->
+<div style="position:fixed;top:72px;right:1.5rem;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;">
+  <p style="font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--gold);opacity:0.65;text-transform:uppercase;margin:0;">Verified &amp; Recognized By</p>
+  <div style="display:flex;align-items:center;gap:0.4rem;">
+    <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.45rem;display:flex;align-items:center;">
+      <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png" alt="PayPal Giving Fund" style="height:15px;width:auto;display:block;"/>
+    </div>
+    <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.45rem;display:flex;align-items:center;">
+      <img src="techsoup-logo.png" alt="TechSoup Verified" style="height:15px;width:auto;display:block;"/>
+    </div>
+    <div style="background:#ffffff;border-radius:4px;padding:0.2rem 0.45rem;display:flex;align-items:center;">
+      <img src="goodstack-logo.png" alt="GoodStack Verified" style="height:15px;width:auto;display:block;"/>
     </div>
   </div>
-</nav>
+</div>
+
 <header class="hero">
   <div class="hero-logo">
     <svg><use href="#aor-logo"/></svg>
@@ -349,17 +353,45 @@
     <h2>Help Us <span>Keep the Torch Lit</span></h2>
 
     <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);border-left:4px solid var(--gold);padding:1.75rem 2rem;margin-bottom:2rem;text-align:left;">
-      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.25rem;flex-wrap:wrap;">
-        <div>
-          <p style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.3em;color:var(--gold);margin-bottom:0.4rem;text-transform:uppercase;">A Proud Milestone</p>
-          <p style="font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin:0;">Accepted into the <span style="color:var(--gold-light);">PayPal Giving Fund</span></p>
+      <p style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.3em;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;">Verified &amp; Recognized</p>
+
+      <p style="font-size:1.05rem;color:var(--text);margin-bottom:1.25rem;">We did not set out to collect credentials. But these recognitions matter, because they tell you something real: <strong style="color:var(--gold-light)">The Age of Reason has been vetted, verified, and accepted by three of the most respected platforms in the nonprofit world.</strong> That is not a marketing claim. It is a fact, earned through a formal application process.</p>
+
+      <p style="font-size:1.05rem;color:var(--text);margin-bottom:1.5rem;">We are a registered 501(c)(3). Every dollar donated is fully tax deductible. And every organization listed below has independently confirmed that this mission is legitimate, accountable, and worthy of your trust.</p>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;">
+          <div style="background:#ffffff;border-radius:6px;padding:0.5rem 1rem;flex-shrink:0;display:flex;align-items:center;">
+            <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png" alt="PayPal Giving Fund" style="height:28px;width:auto;display:block;"/>
+          </div>
+          <div>
+            <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold-light);margin-bottom:0.3rem;">PayPal Giving Fund</p>
+            <p style="font-size:0.95rem;color:var(--text);margin:0;">Acceptance into the PayPal Giving Fund is reserved for verified 501(c)(3) nonprofits that meet PayPal's standards for accountability and mission integrity. Your donation is processed directly through their nonprofit giving platform, fully secured and tracked.</p>
+          </div>
         </div>
-        <div style="background:#ffffff;border-radius:6px;padding:0.5rem 1rem;flex-shrink:0;">
-          <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png" alt="PayPal Giving Fund" style="height:32px;width:auto;display:block;"/>
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;">
+          <div style="background:#ffffff;border-radius:6px;padding:0.5rem 1rem;flex-shrink:0;display:flex;align-items:center;min-width:90px;justify-content:center;">
+            <img src="techsoup-logo.png" alt="TechSoup Verified" style="height:28px;width:auto;display:block;"/>
+          </div>
+          <div>
+            <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold-light);margin-bottom:0.3rem;">TechSoup</p>
+            <p style="font-size:0.95rem;color:var(--text);margin:0;">TechSoup provides technology and resources exclusively to verified nonprofits. Being accepted into the TechSoup network confirms our standing as a legitimate charitable organization under the scrutiny of one of the most rigorous nonprofit verification programs in the country.</p>
+          </div>
         </div>
+
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;">
+          <div style="background:#ffffff;border-radius:6px;padding:0.5rem 1rem;flex-shrink:0;display:flex;align-items:center;min-width:90px;justify-content:center;">
+            <img src="goodstack-logo.png" alt="GoodStack Verified" style="height:28px;width:auto;display:block;"/>
+          </div>
+          <div>
+            <p style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold-light);margin-bottom:0.3rem;">GoodStack</p>
+            <p style="font-size:0.95rem;color:var(--text);margin:0;">GoodStack connects vetted nonprofits with donors and corporate partners around the world. Their verification process independently confirms our legal status, mission, and financial accountability. It is recognition on a global stage.</p>
+          </div>
+        </div>
+
       </div>
-      <p style="font-size:1.05rem;color:var(--text);margin-bottom:0.75rem;">We are honored to announce that <strong style="color:var(--gold-light)">The Age of Reason has been accepted into the PayPal Giving Fund</strong> — a distinction granted only to verified 501(c)(3) nonprofits that meet PayPal's standards for accountability and mission.</p>
-      <p style="margin-bottom:0;">This means your donation is processed directly through PayPal's nonprofit giving platform, fully verified and <strong style="color:var(--gold-light)">100% tax deductible</strong>. We are just getting started, and every dollar you give goes directly into building this organization — the community, the programs, the outreach, and the infrastructure that will make The Age of Reason real and lasting.</p>
     </div>
 
     <p>The Age of Reason exists to finish what Thomas Paine started: to build a community grounded in reason, fellowship, and honest inquiry. Your support makes that possible.</p>
